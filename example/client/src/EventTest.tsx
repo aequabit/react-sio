@@ -7,7 +7,7 @@ interface IState {
     data: any;
 }
 
-export default class EventExample extends React.Component<{}, IState> {
+export default class EventTet extends React.Component<{}, IState> {
     public static readonly contextTypes = {
         socket: PropTypes.object.isRequired
     };
@@ -26,9 +26,16 @@ export default class EventExample extends React.Component<{}, IState> {
 
     public render() {
         return (
-            <Event name="test" handler={data => this.setState({ data })}>
-                <pre>{JSON.stringify(this.state.data)}</pre>
+            <Event name="test">
+                {data => this._render(data)}
             </Event>
         );
+    }
+
+    private _render(data) {
+        if (data === null)
+            return <h3>loading...</h3>;
+
+        return <pre>{JSON.stringify(data)}</pre>;
     }
 }

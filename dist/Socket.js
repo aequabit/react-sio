@@ -49,7 +49,7 @@ var Socket = /** @class */ (function (_super) {
         return { socket: this._socket };
     };
     Socket.prototype.render = function () {
-        return React.createElement(React.Fragment, null, this.props.children);
+        return (React.createElement(React.Fragment, null, this.props.children));
     };
     Socket.childContextTypes = {
         socket: PropTypes.object

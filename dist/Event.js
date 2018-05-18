@@ -20,14 +20,10 @@ var Event = /** @class */ (function (_super) {
             data: null
         };
         _this._onData = function (data) {
-            _this.props.handler(data);
             _this.setState({ data: data });
         };
         return _this;
     }
-    Event.prototype.getChildContext = function () {
-        return { data: this.state.data };
-    };
     Event.prototype.componentDidMount = function () {
         this.context.socket.on(this.props.name, this._onData);
     };
@@ -35,15 +31,10 @@ var Event = /** @class */ (function (_super) {
         this.context.socket.off(this.props.name, this._onData);
     };
     Event.prototype.render = function () {
-        return (React.createElement(React.Fragment, null, (this.props.blocking && this.state.data === null)
-            ? this.props.blocking()
-            : this.props.children));
+        return (React.createElement(React.Fragment, null, this.props.children(this.state.data)));
     };
     Event.contextTypes = {
         socket: PropTypes.object.isRequired
-    };
-    Event.childContextTypes = {
-        data: PropTypes.any
     };
     return Event;
 }(React.Component));

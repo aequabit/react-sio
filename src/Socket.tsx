@@ -61,6 +61,10 @@ export default class Socket extends React.Component<IProps, IState> {
     }
 
     public render() {
-        return <React.Fragment>{this.props.children}</React.Fragment>;
+        return (
+            <React.Fragment>
+                {this.props.children}
+            </React.Fragment>
+        );
     }
 }

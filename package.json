@@ -1,6 +1,6 @@
 {
     "name": "react-sio",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Socket.io Wrapper for React",
     "main": "dist/index.js",
     "typings": "typings.d.ts",

@@ -48,8 +48,8 @@ export default class App extends React.Component<{}, IState> {
     }
 
     public render() {
-        <Event name="myEvent" handler={data => this.setState({ data })} >
-            <p>{this.state.data || 'loading...'}</p>
+        <Event name="myEvent">
+            {data => <p>{data || 'loading...'}</p>}
         </Event>
     }
 }

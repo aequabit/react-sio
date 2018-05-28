@@ -26,16 +26,16 @@ export default class EventTet extends React.Component<{}, IState> {
 
     public render() {
         return (
-            <Event name="test">
-                {data => this._render(data)}
+            <Event name="test" handler={data => this.setState({ data })}>
+                {this._render()}
             </Event>
         );
     }
 
-    private _render(data) {
-        if (data === null)
+    private _render() {
+        if (this.state.data === null)
             return <h3>loading...</h3>;
 
-        return <pre>{JSON.stringify(data)}</pre>;
+        return <pre>{JSON.stringify(this.state.data)}</pre>;
     }
 }

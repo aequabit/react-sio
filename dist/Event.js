@@ -16,12 +16,7 @@ var Event = /** @class */ (function (_super) {
     __extends(Event, _super);
     function Event(props, context) {
         var _this = _super.call(this, props, context) || this;
-        _this.state = {
-            data: null
-        };
-        _this._onData = function (data) {
-            _this.setState({ data: data });
-        };
+        _this._onData = function (data) { return _this.props.handler(data); };
         return _this;
     }
     Event.prototype.componentDidMount = function () {
@@ -31,7 +26,7 @@ var Event = /** @class */ (function (_super) {
         this.context.socket.off(this.props.name, this._onData);
     };
     Event.prototype.render = function () {
-        return (React.createElement(React.Fragment, null, this.props.children(this.state.data)));
+        return (React.createElement(React.Fragment, null, this.props.children));
     };
     Event.contextTypes = {
         socket: PropTypes.object.isRequired

@@ -22,7 +22,7 @@ declare module 'react-sio' {
 
     interface IEventProps {
         name: string;
-        children: (data: any) => any;
+        handler: (data: any) => void;
     }
 
     class Event extends React.Component<IEventProps> { }

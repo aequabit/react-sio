@@ -3,20 +3,12 @@ import * as React from 'react';
 
 interface IProps {
     name: string;
-    children: (data: any) => any;
+    handler: (data: any) => void;
 }
 
-interface IState {
-    data: any;
-}
-
-export default class Event extends React.Component<IProps, IState> {
+export default class Event extends React.Component<IProps> {
     public static readonly contextTypes = {
         socket: PropTypes.object.isRequired
-    };
-
-    public readonly state: IState = {
-        data: null
     };
 
     public constructor(props, context) {
@@ -34,12 +26,10 @@ export default class Event extends React.Component<IProps, IState> {
     public render(): JSX.Element {
         return (
             <React.Fragment>
-                {this.props.children(this.state.data)}
+                {this.props.children}
             </React.Fragment>
         );
     }
 
-    private readonly _onData = data => {
-        this.setState({ data });
-    }
+    private readonly _onData = data => this.props.handler(data);
 }
